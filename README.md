@@ -47,3 +47,19 @@ docker run -d \
 All mnamer behavior is controlled via config file, no flags are passed beyond `--batch` and `--config-path`. The config file must be named `.mnamer-v2.json`. The `movie_directory` and `episode_directory` paths in the config must match the container mount points (e.g. `/mnt/movies`, `/mnt/tv`).
 
 See [mnamer settings docs](https://github.com/jkwill87/mnamer/wiki/Settings) for all available options.
+
+## Synology NAS
+
+The Synology kernel has low default inotify limits. SSH into the NAS and run:
+
+```bash
+echo 256 | sudo tee /proc/sys/fs/inotify/max_user_instances
+echo 65536 | sudo tee /proc/sys/fs/inotify/max_user_watches
+```
+
+To persist across reboots, add a boot-up task in Control Panel → Task Scheduler → Create → Triggered Task → Boot-up (run as `root`):
+
+```bash
+echo 256 > /proc/sys/fs/inotify/max_user_instances
+echo 65536 > /proc/sys/fs/inotify/max_user_watches
+```
