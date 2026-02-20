@@ -4,6 +4,10 @@ Watches a directory for new/moved media files using `inotifywait` and automatica
 
 > **Linux only**: relies on `inotify` which requires a native Linux kernel. Bind-mounted volumes from macOS/Windows hosts do not propagate filesystem events to the container.
 
+## Use
+
+`docker pull comatory/mnamer-watcher:latest`
+
 ## Build
 
 ```bash
