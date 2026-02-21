@@ -48,7 +48,35 @@ All mnamer behavior is controlled via config file, no flags are passed beyond `-
 
 See [mnamer settings docs](https://github.com/jkwill87/mnamer/wiki/Settings) for all available options.
 
-## Synology NAS
+## Guides
+
+### Synology NAS
+
+_This guide assumes that you're using DSM7 of the operating system_.
+
+1. Open _Container Manager_, select _Registry_ tab and search for the docker image: `comatory/mnamer-watcher`. Select it and click the download button:
+  ![DSM Container Manager showing how to download the image](doc/dsm_01.png)
+2. Once it's downloaded, the image should show up in _Image_ tab. Select it and click _Run_ button:
+  ![DSM Container Manager showing how to run the image](doc/dsm_02.png)
+3. Now we're setting up the container. It's not necessary for the container to auto-restart, but you can set it up if you need to. It's good idea to set up some resource constraints. Click _Next_ when you're done.
+  ![DSM Container Manager container setup for resource management](doc/dsm_03.png)
+4. This image does not expose any UI, so no port forwarding is needed. But it's important to set the volumes correctly, see [volumes](#volumes) section:
+  ![DSM Container Manager container setup for volumes](doc/dsm_04.png)
+
+  The `/mnt/.config` mount point `(1)` should point to a folder which contains `.mnamer-v2.json` configuration file. The `/mnt/watch` mount point `(2)` is where your download folder is located. This is where the `mnamer` will scan for new files and folders. For mount points `/mnt/Film` and `/mnt/TV` `(3, 4)` - these can be anything really. It's important they correspond to the configuration file settings for `movie_directory` and `episode_directory`.
+
+5. In this example, I configure `EXCLUDE_PATTERN` environment variable to ignore any files appearing in `incomplete/` subfolder. You can specify multiple locations using `|` operator. This is completely optional, if you store incomplete downloads outside of `/mnt/watch`, you don't need to worry about this.
+  ![DSM Container Manager container setup for variables](doc/dsm_05.png)
+6. You don't need to set any other settings here if you don't need to. Click _Next_ button, check to run the container after creating it and click _Done_.
+7. Go to _Container_ tab, select the created container and click _Details_ button.
+  ![DSM Container Manager container list](doc/dsm_06.png)
+8. Click _Log_ tab. If the container started successfully, you should see log such as: `Watches established`:
+  ![DSM Container Manager logs](doc/dsm_07.png)
+9. Try adding a media file to the watched folder. You should see further logs from `mnamer` to see whether the file was processed and where it was moved.
+
+## Troubleshooting
+
+### Synology NAS
 
 The Synology kernel has low default inotify limits. SSH into the NAS and run:
 
