@@ -50,52 +50,52 @@ See [mnamer settings docs](https://github.com/jkwill87/mnamer/wiki/Settings) for
 
 <details>
     <summary>Example configuration file</summary>
-    
-    ```json
-    {
-    "api_key_omdb": null,
-    "api_key_tmdb": "<your-api-key>",
-    "api_key_tvdb": null,
-    "api_key_tvmaze": null,
-    "batch": true,
-    "episode_api": "tvmaze",
-    "episode_directory": "/mnt/TV",
-    "episode_format": "{series} [{id_tvmaze}]/Season {season}/{series} - S{season:02}E{episode:02} - {title}.{extension}",
-    "hits": 5,
-    "ignore": [
-        ".*sample.*",
-        "^RARBG.*"
-    ],
-    "language": null,
-    "lower": false,
-    "mask": [
-        ".avi",
-        ".m4v",
-        ".mp4",
-        ".mkv",
-        ".ts",
-        ".wmv",
-        ".srt",
-        ".idx",
-        ".sub"
-    ],
-    "movie_api": "tmdb",
-    "movie_directory": "/mnt/Film",
-    "movie_format": "{name} ({year})[{id_tmdb}]/{name} ({year}) - {quality}.{extension}",
-    "no_guess": false,
-    "no_overwrite": false,
-    "no_style": false,
-    "recurse": true,
-    "replace_after": {
-        "&": "and",
-        ";": ",",
-        "@": "at"
-    },
-    "replace_before": {},
-    "scene": false,
-    "verbose": true
-    }
-    ```
+
+```json
+{
+"api_key_omdb": null,
+"api_key_tmdb": "<your-api-key>",
+"api_key_tvdb": null,
+"api_key_tvmaze": null,
+"batch": true,
+"episode_api": "tvmaze",
+"episode_directory": "/mnt/TV",
+"episode_format": "{series} [{id_tvmaze}]/Season {season}/{series} - S{season:02}E{episode:02} - {title}.{extension}",
+"hits": 5,
+"ignore": [
+    ".*sample.*",
+    "^RARBG.*"
+],
+"language": null,
+"lower": false,
+"mask": [
+    ".avi",
+    ".m4v",
+    ".mp4",
+    ".mkv",
+    ".ts",
+    ".wmv",
+    ".srt",
+    ".idx",
+    ".sub"
+],
+"movie_api": "tmdb",
+"movie_directory": "/mnt/Film",
+"movie_format": "{name} ({year})[{id_tmdb}]/{name} ({year}) - {quality}.{extension}",
+"no_guess": false,
+"no_overwrite": false,
+"no_style": false,
+"recurse": true,
+"replace_after": {
+    "&": "and",
+    ";": ",",
+    "@": "at"
+},
+"replace_before": {},
+"scene": false,
+"verbose": true
+}
+```
 </details>
 
 ## Guides
