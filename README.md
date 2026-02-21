@@ -44,9 +44,60 @@ docker run -d \
 
 ## mnamer config
 
-All mnamer behavior is controlled via config file, no flags are passed beyond `--batch` and `--config-path`. The config file must be named `.mnamer-v2.json`. The `movie_directory` and `episode_directory` paths in the config must match the container mount points (e.g. `/mnt/movies`, `/mnt/tv`).
+**Config file must be provided**, otherwise `mnamer` will be used with the default options. All mnamer behavior is controlled via config file, no flags are passed beyond `--batch`[^1] and `--config-path`. The config file must be named `.mnamer-v2.json`. The `movie_directory` and `episode_directory` paths in the config must match the container mount points (e.g. `/mnt/movies`, `/mnt/tv`).
 
 See [mnamer settings docs](https://github.com/jkwill87/mnamer/wiki/Settings) for all available options.
+
+<details>
+    <summary>Example configuration file</summary>
+    
+    ```json
+    {
+    "api_key_omdb": null,
+    "api_key_tmdb": "<your-api-key>",
+    "api_key_tvdb": null,
+    "api_key_tvmaze": null,
+    "batch": true,
+    "episode_api": "tvmaze",
+    "episode_directory": "/mnt/TV",
+    "episode_format": "{series} [{id_tvmaze}]/Season {season}/{series} - S{season:02}E{episode:02} - {title}.{extension}",
+    "hits": 5,
+    "ignore": [
+        ".*sample.*",
+        "^RARBG.*"
+    ],
+    "language": null,
+    "lower": false,
+    "mask": [
+        ".avi",
+        ".m4v",
+        ".mp4",
+        ".mkv",
+        ".ts",
+        ".wmv",
+        ".srt",
+        ".idx",
+        ".sub"
+    ],
+    "movie_api": "tmdb",
+    "movie_directory": "/mnt/Film",
+    "movie_format": "{name} ({year})[{id_tmdb}]/{name} ({year}) - {quality}.{extension}",
+    "no_guess": false,
+    "no_overwrite": false,
+    "no_style": false,
+    "recurse": true,
+    "replace_after": {
+        "&": "and",
+        ";": ",",
+        "@": "at"
+    },
+    "replace_before": {},
+    "scene": false,
+    "verbose": true
+}
+
+    ```
+</details>
 
 ## Guides
 
@@ -91,3 +142,5 @@ To persist across reboots, add a boot-up task in Control Panel → Task Schedule
 echo 256 > /proc/sys/fs/inotify/max_user_instances
 echo 65536 > /proc/sys/fs/inotify/max_user_watches
 ```
+
+[^1]: `--batch` flag ensures that the program can work headless (without user interaction)
