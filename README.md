@@ -6,7 +6,7 @@ Watches a directory for new/moved media files using `inotifywait` and automatica
 
 ## Use
 
-`docker pull comatory/mnamer-watcher:latest`
+`docker pull comatory/mnamer-watcher:latest` from [docker hub](https://hub.docker.com/repositories/comatory)
 
 ## Build
 
