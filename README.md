@@ -63,8 +63,8 @@ _This guide assumes that you're using DSM7 of the operating system_.
 4. This image does not expose any UI, so no port forwarding is needed. But it's important to set the volumes correctly, see [volumes](#volumes) section:
   ![DSM Container Manager container setup for volumes](doc/dsm_04.png)
 
-  The `/mnt/.config` mount point `(1)` should point to a folder which contains `.mnamer-v2.json` configuration file. The `/mnt/watch` mount point `(2)` is where your download folder is located. This is where the `mnamer` will scan for new files and folders. For mount points `/mnt/Film` and `/mnt/TV` `(3, 4)` - these can be anything really. It's important they correspond to the configuration file settings for `movie_directory` and `episode_directory`.
-
+    The `/mnt/.config` mount point `(1)` should point to a folder which contains `.mnamer-v2.json` configuration file. The `/mnt/watch` mount point `(2)` is where your download folder is located. This is where the `mnamer` will scan for new files and folders. For mount points `/mnt/Film` and `/mnt/TV` `(3, 4)` - these can be anything really. It's important they correspond to the configuration file settings for `movie_directory` and `episode_directory`.
+  
 5. In this example, I configure `EXCLUDE_PATTERN` environment variable to ignore any files appearing in `incomplete/` subfolder. You can specify multiple locations using `|` operator. This is completely optional, if you store incomplete downloads outside of `/mnt/watch`, you don't need to worry about this.
   ![DSM Container Manager container setup for variables](doc/dsm_05.png)
 6. You don't need to set any other settings here if you don't need to. Click _Next_ button, check to run the container after creating it and click _Done_.
