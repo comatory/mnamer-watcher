@@ -51,7 +51,7 @@ See [mnamer settings docs](https://github.com/jkwill87/mnamer/wiki/Settings) for
 <details>
     <summary>Example configuration file</summary>
     
-    ```
+    ```json
     {
     "api_key_omdb": null,
     "api_key_tmdb": "<your-api-key>",
@@ -94,8 +94,7 @@ See [mnamer settings docs](https://github.com/jkwill87/mnamer/wiki/Settings) for
     "replace_before": {},
     "scene": false,
     "verbose": true
-}
-
+    }
     ```
 </details>
 
